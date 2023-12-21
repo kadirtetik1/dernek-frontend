@@ -1,0 +1,89 @@
+
+.background{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 0px 2vw; */
+
+    width: 100%;
+    height: 10vh;
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,138,166,1) 100%); */
+    background:linear-gradient(90deg, rgba(22,67,0,1) 0%, rgba(114,164,0,1) 34%, rgba(0,166,46,1) 100%);
+    box-shadow: 0px 5px 15px rgb(49, 49, 50);
+    /* border-radius: 0px 0px 20px 20px; */
+    
+
+}
+
+/* h2{
+    color: aliceblue;
+} */
+
+.title{
+    font-size: 25px;
+    font-weight: 700;
+    color: aliceblue;
+}
+
+.logo{
+    background-color: aliceblue;
+    height: 80%;
+    /* width: 8vh ; */
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1vw;
+
+}
+
+.user{
+    /* background-color: aliceblue; */
+    height: 80%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: aliceblue;
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.register{
+    border: 1px solid rgba(240, 248, 255, 0);
+    padding: 10px;
+   
+}
+
+.login{
+    border: 1px solid rgba(240, 248, 255, 0);
+    padding: 10px;
+}
+.userlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+:hover.login{
+    cursor: pointer;
+    border: 1px solid aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+
+:hover.register{
+    cursor: pointer;
+    border: 1px solid aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+
+
+
