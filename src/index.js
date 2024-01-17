@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Register from './screens/Register/Register';
+import UserHome from './screens/User/UserHome';
+import AdminHome from './screens/Admin/AdminHome';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,9 +20,9 @@ root.render(
 
   <Route>
     <Route path="Register" element={ <Register/> } />
-    
-    {/* <Route path="teacherHome" element={ <TeacherHome/>} />
-    <Route path="studentInfos" element={<StudentInfos/>} /> */}
+    <Route path="UserHome" element={ <UserHome/> } />
+    <Route path="AdminHome" element={ <AdminHome/> } />
+   
   </Route>
 
 

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { createAPIEndpoint, EndPoints } from '../../api';
 import styles from './Login.module.css'
+import {Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -60,7 +64,11 @@ const Login = () => {
         //   localStorage.setItem("email", decode.email); 
         //   localStorage.setItem("academic_role", decode.academic_role); 
 
-        alert("Giriş Başarılı!")
+        // alert("Giriş Başarılı!")
+
+         navigate("/UserHome");
+
+        // <Link to="/UserHome"/>
  
         }
 

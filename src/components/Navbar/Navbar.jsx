@@ -11,7 +11,11 @@ const Navbar = () => {
     return (
       <div className={styles.background}>
 
-        <div className={styles.logo}>
+        <div 
+        onClick={ () => {
+          navigate("/")
+        }} 
+        className={styles.logo}>
           <img src={require('../../assets/Dernek-Logo.png')} style={{maxWidth:80, maxHeight:80 }}/>
         </div>
         <div className={styles.title}>Kargın Yenice Köyü Kalkınma Ve Dayanışma Derneği</div>
