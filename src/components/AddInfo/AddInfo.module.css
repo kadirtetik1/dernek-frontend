@@ -29,17 +29,22 @@ align-items: start;
     color: rgb(230, 230, 230);
     border: 1px solid aliceblue;
 
-
-
     font-size: 20px;
     font-weight: 600;
-    width: 130px;
-    height: 100px;
+    width: 15rem;
+    height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
     border-radius: 10px;
+}
+
+.submitContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 :hover.submitButton{

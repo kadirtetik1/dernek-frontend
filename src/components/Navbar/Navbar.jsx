@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import styles from './Navbar.module.css'
 import { FaUser } from "react-icons/fa";
+import Login from './Login';
+import {useNavigate } from 'react-router-dom'
 
-export default class Navbar extends Component {
-  render() {
+const Navbar = () => {
+
+  const navigate = useNavigate();
+
     return (
       <div className={styles.background}>
 
@@ -14,12 +18,19 @@ export default class Navbar extends Component {
         <div className={styles.user}>
 
           <div className={styles.userlogo}><FaUser color='#1f4591' size={20}/></div>
-          <div className={styles.register}>Kayıt Ol</div>
-          <div className={styles.login}>Giriş Yap</div>
+          <div 
+          onClick={ () => {
+            navigate("/Register")
+          }} 
+          className={styles.register}>Kayıt Ol</div>
+          
+          <Login/>
           
         </div>
 
       </div>
     )
   }
-}
+
+
+export default Navbar

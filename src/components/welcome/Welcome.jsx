@@ -12,10 +12,12 @@ const Welcome = () => {
         
         
       </div>
+
       <div className={styles.container2}>
       <h2>Bilgilerinizi Girerek Sistemimizde Yerinizi Alabilirsiniz. </h2>
         <AddInfo/>
       </div>
+      
     </div>
   )
 }
