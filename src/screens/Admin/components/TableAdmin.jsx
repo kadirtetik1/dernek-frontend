@@ -10,6 +10,9 @@ import { Box, IconButton } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 
 var data = [];
 var data1=[];
@@ -91,6 +94,37 @@ const TableAdmin = () => {
         [],
       );
 
+      const deleteAddress = (id) => {
+        confirmAlert({
+          title: 'Adresi Kaydını Silmek Üzeresiniz.',
+          message: 'Onaylıyor musunuz?',
+          buttons: [
+            {
+              label: 'Evet',
+              onClick: () => deleteFunction(id)
+            },
+            {
+              label: 'Hayır',
+            //   onClick: () => alert('İşlem İptal Edildi')
+            }
+          ]
+        });
+      };
+
+     function deleteFunction(id){
+
+       createAPIEndpoint(EndPoints.address).delete(id).then(res => {
+
+                //   alert("Adres Kaydı Silindi!");
+                  window.location.reload(false);
+           
+                  console.log(res.data);
+               
+                  console.log(res)}
+                  ).catch(err => console.log(err));
+
+     }
+
 
         const table = useMaterialReactTable({
           columns,
@@ -107,7 +141,9 @@ const TableAdmin = () => {
                 <EditIcon />
               </IconButton>
 
-              <IconButton color="error" onClick={() => alert("silindi")}>
+              <IconButton color="error" onClick={() => 
+                
+                deleteAddress(data[row.index].id)}>
                 <DeleteIcon />
               </IconButton>
 
