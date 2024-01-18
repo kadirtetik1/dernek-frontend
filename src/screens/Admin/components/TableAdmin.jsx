@@ -1,4 +1,3 @@
-
 import { useMemo, React, useEffect, useState } from 'react';
 
 import {
@@ -9,13 +8,14 @@ import { createAPIEndpoint, EndPoints } from '../../../api';
 
 import { Box, IconButton } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 var data = [];
 var data1=[];
 
 
-const TableUser = () => {
+const TableAdmin = () => {
 
  const [data2, setData] = useState("");
   
@@ -96,17 +96,23 @@ const TableUser = () => {
           columns,
           data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
           
-          // enableRowActions: true,
-          // renderRowActions: ({ row }) => (
-          //   <Box>
-          //     <IconButton color="info" onClick={() => console.info(data[row.index].id)}> 
-          //       <EditIcon />
-          //     </IconButton>
-          //     <IconButton color="error" onClick={() => alert("silindi")}>
-          //       <DeleteIcon />
-          //     </IconButton>
-          //   </Box>
-          // ),
+          enableRowActions: true,
+          renderRowActions: ({ row }) => (
+            <Box>
+             <IconButton color="info" onClick={() => alert("Kullanıcı Bilgileri")}>
+                <AccountCircleIcon />
+              </IconButton>
+
+              <IconButton color="success" onClick={() => console.info(data[row.index].id)}> 
+                <EditIcon />
+              </IconButton>
+
+              <IconButton color="error" onClick={() => alert("silindi")}>
+                <DeleteIcon />
+              </IconButton>
+
+            </Box>
+          ),
         
         });
 
@@ -119,4 +125,5 @@ const TableUser = () => {
   return <MaterialReactTable table={table} />;
 };
 
-export default TableUser
+
+export default TableAdmin

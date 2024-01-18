@@ -3,6 +3,7 @@ import { createAPIEndpoint, EndPoints } from '../../api';
 import styles from './AddInfo.module.css'
 import InputContainer from './InputContainer/InputContainer';
 import {useNavigate } from 'react-router-dom'
+import InputNumber from './InputContainer/InputNumber';
 
 const AddInfo = (props) => {
 
@@ -99,7 +100,7 @@ const AddInfo = (props) => {
       <InputContainer info="Soyad:" placeholder="Soyadınızı Giriniz.." onChange={ (e) => {handleLastNameChange(e.target.value) }}/>
       <InputContainer info="Baba Adı:" placeholder="Babanızın Adını Giriniz.." onChange={ (e) => {handleFatherNameChange(e.target.value) }}/>
       <InputContainer info="Adres:" placeholder="Adresinizi Giriniz.." onChange={ (e) => {handleAddressChange(e.target.value) }}/>
-      <InputContainer info="Telefon:" placeholder="Telefon Numaranızı Giriniz.." onChange={ (e) => {handlePhoneChange(e.target.value) }}/>
+      <InputNumber    info="Telefon:" placeholder="Telefon Numaranızı Giriniz.." onChange={ (e) => {handlePhoneChange(e.target.value) }}/>
       <InputContainer info="İş:" placeholder="Kurum Bilginizi Giriniz.." onChange={ (e) => {handleWorkInfoChange(e.target.value) }}/>
       <InputContainer info="Unvan:" placeholder="Prof, Doktor.." onChange={ (e) => {handleUnvanChange(e.target.value) }}/>
       <InputContainer info="Kabine:" placeholder="HacıYusuflar.." onChange={ (e) => {handleFamilyChange(e.target.value) }}/>

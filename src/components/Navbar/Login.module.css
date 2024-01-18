@@ -28,13 +28,17 @@
     width: 100%;
     padding: 10px;
     cursor: pointer;
-    background-color: rgb(2,208,1);
+    background-color: 	rgb(50,205,50);
     border: 1px solid rgba(0, 0, 0, 0);
     font-size: 1.1rem;
     margin-top: 0.25rem;
     font-weight: 500;
     color: whitesmoke;
     text-decoration:none;
+  }
+
+  .loginButton:hover{
+    background-color: rgb(12, 240, 12);
   }
 
   .inputs {
