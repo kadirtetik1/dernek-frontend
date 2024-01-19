@@ -12,6 +12,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import AddAddress from '../../User/AddAddress';
 
 
 var data = [];
@@ -125,6 +126,13 @@ const TableAdmin = () => {
 
      }
 
+     const [addAddress, setAddAddress] = useState(false);
+
+    function toggleAddAddress (){
+      setAddAddress(!addAddress);
+
+    }
+
 
         const table = useMaterialReactTable({
           columns,
@@ -133,13 +141,33 @@ const TableAdmin = () => {
           enableRowActions: true,
           renderRowActions: ({ row }) => (
             <Box>
-             <IconButton color="info" onClick={() => alert("Kullanıcı Bilgileri")}>
+             <IconButton color="info" onClick={() => alert(data[row.index].id)}>
                 <AccountCircleIcon />
+                <div>
+                  {data[row.index].name}
+                </div>
               </IconButton>
 
-              <IconButton color="success" onClick={() => console.info(data[row.index].id)}> 
-                <EditIcon />
+
+              <div>
+
+              <IconButton color="success">  {/* alert(data[row.index].id);  */}
+
+              <AddAddress name={data[row.index].name} 
+              lastname={data[row.index].lastname}
+              fathername={data[row.index].fatherName}
+              address={data[row.index].address}
+              phone={data[row.index].phone}
+              workinfo={data[row.index].workInfo}
+              family={data[row.index].family}
+              unvan={data[row.index].unvan}
+              
+              isclicked={addAddress} closeInfo={setAddAddress}/>
+              
+                <EditIcon onClick={() => toggleAddAddress()} />
               </IconButton>
+
+              </div>
 
               <IconButton color="error" onClick={() => 
                 

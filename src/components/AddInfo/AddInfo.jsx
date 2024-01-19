@@ -4,6 +4,8 @@ import styles from './AddInfo.module.css'
 import InputContainer from './InputContainer/InputContainer';
 import {useNavigate } from 'react-router-dom'
 import InputNumber from './InputContainer/InputNumber';
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddInfo = (props) => {
 
@@ -52,6 +54,9 @@ const AddInfo = (props) => {
 
   const handleSubmitAddress = (event) =>{
 
+    // event.preventDefault();
+    // window.location.reload(true);
+
     const data ={
       Name : name,   //Soldaki backendden gelen, sağdaki reacttan gelen adlandırmalar.
       Lastname: lastname,
@@ -69,14 +74,16 @@ const AddInfo = (props) => {
 
       createAPIEndpoint(EndPoints.address).post(data).then(res => {
 
-        //   const showToastMessage = () => {
-        //     toast.info("Registration is Sucessfull!", {
-        //         position: toast.POSITION.TOP_RİGHT
-        //     });
-        // };
-        // showToastMessage();
+          const showToastMessage = () => {
+            toast.info("Kayıt Başarıyla Oluşturuldu!", {
+                position: toast.POSITION.TOP_RİGHT
+            });
+        };
+        showToastMessage();
+
+        setTimeout(() =>  window.location.reload(false), 2000);
     
-        // alert("Kayıt Başarılı!")
+        
     
         console.log(res.data);
         
@@ -87,6 +94,8 @@ const AddInfo = (props) => {
 
   }
 
+  
+
   return (
     <div className={styles.background1}>
 
@@ -96,14 +105,14 @@ const AddInfo = (props) => {
 
         <div className={styles.background}>
 
-      <InputContainer info="Ad:" placeholder="Adınızı Giriniz.." onChange={ (e) => {handleNameChange(e.target.value) }}/>
-      <InputContainer info="Soyad:" placeholder="Soyadınızı Giriniz.." onChange={ (e) => {handleLastNameChange(e.target.value) }}/>
-      <InputContainer info="Baba Adı:" placeholder="Babanızın Adını Giriniz.." onChange={ (e) => {handleFatherNameChange(e.target.value) }}/>
-      <InputContainer info="Adres:" placeholder="Adresinizi Giriniz.." onChange={ (e) => {handleAddressChange(e.target.value) }}/>
-      <InputNumber    info="Telefon:" placeholder="Telefon Numaranızı Giriniz.." onChange={ (e) => {handlePhoneChange(e.target.value) }}/>
-      <InputContainer info="İş:" placeholder="Kurum Bilginizi Giriniz.." onChange={ (e) => {handleWorkInfoChange(e.target.value) }}/>
-      <InputContainer info="Unvan:" placeholder="Prof, Doktor.." onChange={ (e) => {handleUnvanChange(e.target.value) }}/>
-      <InputContainer info="Kabine:" placeholder="HacıYusuflar.." onChange={ (e) => {handleFamilyChange(e.target.value) }}/>
+      <InputContainer value={props.name} info="Ad:" placeholder="Adınızı Giriniz.." onChange={ (e) => {handleNameChange(e.target.value) }}/>
+      <InputContainer value={props.lastname} info="Soyad:" placeholder="Soyadınızı Giriniz.." onChange={ (e) => {handleLastNameChange(e.target.value) }}/>
+      <InputContainer value={props.fathername} info="Baba Adı:" placeholder="Babanızın Adını Giriniz.." onChange={ (e) => {handleFatherNameChange(e.target.value) }}/>
+      <InputContainer value={props.address} info="Adres:" placeholder="Adresinizi Giriniz.." onChange={ (e) => {handleAddressChange(e.target.value) }}/>
+      <InputNumber value={props.phone}  info="Telefon:" placeholder="Telefon Numaranızı Giriniz.." onChange={ (e) => {handlePhoneChange(e.target.value) }}/>
+      <InputContainer value={props.workinfo} info="İş:" placeholder="Kurum Bilginizi Giriniz.." onChange={ (e) => {handleWorkInfoChange(e.target.value) }}/>
+      <InputContainer value={props.unvan} info="Unvan:" placeholder="Prof, Doktor.." onChange={ (e) => {handleUnvanChange(e.target.value) }}/>
+      <InputContainer value={props.family} info="Kabine:" placeholder="HacıYusuflar.." onChange={ (e) => {handleFamilyChange(e.target.value) }}/>
 
         </div>
 
@@ -115,6 +124,7 @@ const AddInfo = (props) => {
         ><input className={styles.submitButton} type="submit" value="Gönder"/></div>
 
        </form>
+       <ToastContainer />
 
     </div>
   )

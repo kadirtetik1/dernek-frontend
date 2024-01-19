@@ -10,7 +10,7 @@ const AddAddress = (props) => {
         <div className={styles.InfoContainer1}>
 
             <div className={styles.InfoContainer}>
-            <AddInfo/>
+            <AddInfo name={props.name} lastname={props.lastname} fathername={props.fathername} address={props.address} phone={props.phone} workinfo={props.workinfo} family={props.family} unvan={props.unvan}  />
             </div>
 
             <div className={styles.closeButton} onClick={() => props.closeInfo(false)}>

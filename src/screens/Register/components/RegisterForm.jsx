@@ -5,6 +5,8 @@ import InputPassword from '../../../components/AddInfo/InputContainer/InputPassw
 import styles from './RegisterForm.module.css'
 import {useNavigate } from 'react-router-dom'
 import { createAPIEndpoint, EndPoints } from '../../../api';
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterForm = (props) => {
 
@@ -40,6 +42,8 @@ const RegisterForm = (props) => {
 
   const handleRegister = (event) =>{
 
+    event.preventDefault();
+
     const data ={
       Name : name,   //Soldaki backendden gelen, sağdaki reacttan gelen adlandırmalar.
       Lastname: lastname,
@@ -61,7 +65,8 @@ const RegisterForm = (props) => {
         // };
         // showToastMessage();
     
-        alert("Kayıt Başarılı!")
+        alert("Kayıt Başarılı! Anasayfaya Yönlendiriliyorsunuz..");
+        navigate("/UserHome");
     
         console.log(res.data);
         
@@ -72,7 +77,6 @@ const RegisterForm = (props) => {
 
 
   }
-
 
 
 
@@ -105,6 +109,7 @@ const RegisterForm = (props) => {
         </div>
 
       </div>
+      <ToastContainer />
     </div>
   )
 }

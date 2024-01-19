@@ -24,6 +24,8 @@ const Login = () => {
   }
 
   const handleLogin = (value) => {
+
+    value.preventDefault()
     
     const data ={
         Username:username,
@@ -75,8 +77,6 @@ const Login = () => {
       }).catch(err => console.log(err));
 
     }
-
-
 
 
   }
