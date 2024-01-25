@@ -148,10 +148,11 @@ const TableAdmin = () => {
                 </div>
               </IconButton>
 
-
               <div>
 
               <IconButton color="success">  {/* alert(data[row.index].id);  */}
+
+              
 
               <AddAddress name={data[row.index].name} 
               lastname={data[row.index].lastname}

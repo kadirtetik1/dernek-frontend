@@ -8,7 +8,7 @@ const Welcome = () => {
       
       <div className={styles.container1}>
         <h1>Hoşgeldiniz!</h1>
-        <h2>Köy Tanıtımı vs.</h2>
+        <h2>Tanıtım vs.</h2>
         
         
       </div>

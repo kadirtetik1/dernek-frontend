@@ -1,14 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import styles from './Navbar.module.css'
 import { FaUser } from "react-icons/fa";
 import Login from './Login';
 import {useNavigate } from 'react-router-dom'
+import Register from '../../screens/Register/Register';
+import RegisterForm from '../../screens/Register/components/RegisterForm';
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   const navigate = useNavigate();
+  const [register, setRegister] = useState(false); 
 
-    return (
+  function toggleRegister (){
+    setRegister(!register);
+
+    console.log(register);
+ }
+
+    return  (
       <div className={styles.background}>
 
         <div 
@@ -24,7 +33,9 @@ const Navbar = () => {
           <div className={styles.userlogo}><FaUser color='#1f4591' size={20}/></div>
           <div 
           onClick={ () => {
-            navigate("/Register")
+           // navigate("/Register")
+
+           toggleRegister();
           }} 
           className={styles.register}>Kayıt Ol</div>
           
@@ -32,8 +43,12 @@ const Navbar = () => {
           
         </div>
 
+        {/* <Register isclicked={register} closeRegister={setRegister} /> */}
+        <RegisterForm isclicked={register} closeRegister={setRegister} />
+
       </div>
     )
+    
   }
 
 

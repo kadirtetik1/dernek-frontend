@@ -4,6 +4,7 @@ import TableUser from './components/TableUser';
 import styles from './UserHome.module.css'
 import {useNavigate } from 'react-router-dom'
 import AddAddress from './AddAddress';
+import UserNavbar from './components/UserNavbar';
 
 const UserHome = () => {
 
@@ -18,7 +19,7 @@ const UserHome = () => {
 
   return (
     <div>
-        <Navbar/>
+        <UserNavbar/>
         <div className={styles.titleContainer}> 
         <h2 className={styles.title}>Adres Defteri</h2>
 

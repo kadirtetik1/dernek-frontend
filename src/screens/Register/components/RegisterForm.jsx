@@ -7,6 +7,8 @@ import {useNavigate } from 'react-router-dom'
 import { createAPIEndpoint, EndPoints } from '../../../api';
 import {ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {InvalidTokenError, jwtDecode} from 'jwt-decode'
+import {FiX} from "react-icons/fi";
 
 const RegisterForm = (props) => {
 
@@ -58,37 +60,75 @@ const RegisterForm = (props) => {
 
       createAPIEndpoint(EndPoints.user).post(data).then(res => {
 
-        //   const showToastMessage = () => {
-        //     toast.info("Registration is Sucessfull!", {
-        //         position: toast.POSITION.TOP_RİGHT
-        //     });
-        // };
-        // showToastMessage();
+        if(res.data=="Bu kullanıcı adı daha önceden alınmış. Başka bir kullanıcı adı seçiniz."){
+          alert(res.data);
+        }
+
+        else if(res.data=="Bu mail adresiyle kayıtlı bir üyelik bulunmakta. Şifrenizi mi unuttunuz ?"){
+
+          alert(res.data);
+
+        }
+
+        else if(res.data=="Kayıt Başarılı! Giriş yapabilirsiniz."){
+
+          alert("Kayıt Başarılı! Anasayfaya Yönlendiriliyorsunuz.."); 
+
+          
+
+          createAPIEndpoint(EndPoints.user_login, ).post({Username : data.Username ,Password : data.Password}).then((res) =>{
+            console.log(res);
+           
     
-        alert("Kayıt Başarılı! Anasayfaya Yönlendiriliyorsunuz..");
-        navigate("/UserHome");
+            console.log(res.data);
+            
+              localStorage.setItem("Token", res.data.accessToken);
+              const decode = jwtDecode(res.data.accessToken);
+              localStorage.setItem("Id", decode.id); 
+              localStorage.setItem("username", decode.username); 
+              localStorage.setItem("admin", decode.admin); 
+              localStorage.setItem("fullname", decode.fullname); 
+            
+              if(decode.admin){
+                navigate("/AdminHome");
+              }
+    
+              else{
+                navigate("/UserHome");
+              }
+     
+            
+    
+          }).catch(err => console.log(err));
+
+
+        }
+        
     
         console.log(res.data);
         
         console.log(res)}
         ).catch(err => console.log(err));
+
     }
     
-
-
   }
 
 
-
-  return (
+  return props.isclicked ? (
     <div className={styles.container}>
       <div className={styles.formContainer}>
 
-      <h2>Kayıt Olmak İçin Lütfen Bilgilerinizi Giriniz</h2>
+        <div className={styles.ustBilgi}>
+
+        <h2 className={styles.title}>Kayıt Olmak İçin Lütfen Bilgilerinizi Giriniz</h2>
+      <div className={styles.closeButton} onClick={() => props.closeRegister(false)}><FiX size={'2rem'}/></div>
+
+        </div>
+     
 
         <div className={styles.formContainer2}>
 
-   
 
         <form className={styles.formElements}>
             <InputContainer info="Ad:" placeholder="Adınızı Giriniz.." onChange={ (e) => {handleNameChange(e.target.value) }}/>
@@ -112,6 +152,7 @@ const RegisterForm = (props) => {
       <ToastContainer />
     </div>
   )
+  :""
 }
 
 export default RegisterForm

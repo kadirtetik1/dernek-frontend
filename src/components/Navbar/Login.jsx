@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createAPIEndpoint, EndPoints } from '../../api';
 import styles from './Login.module.css'
 import {Link, useNavigate } from 'react-router-dom'
+import {InvalidTokenError, jwtDecode} from 'jwt-decode'
 
 const Login = () => {
 
@@ -53,24 +54,22 @@ const Login = () => {
         }
         else{
 
-        //   console.log(res.data);
-        //   navigate("/studentHome");
-        //   localStorage.setItem("Token", res.data.accessToken);
-        //   const decode = jwtDecode(res.data.accessToken);
-        //   localStorage.setItem("Id", decode.id); 
-        //   localStorage.setItem("username", decode.username); 
-        //   localStorage.setItem("password", decode.password); 
-        //   localStorage.setItem("fullname", decode.fullname); 
-        //   localStorage.setItem("name", decode.name); 
-        //   localStorage.setItem("lastname", decode.lastname); 
-        //   localStorage.setItem("email", decode.email); 
-        //   localStorage.setItem("academic_role", decode.academic_role); 
+        console.log(res.data);
+        
+          localStorage.setItem("Token", res.data.accessToken);
+          const decode = jwtDecode(res.data.accessToken);
+          localStorage.setItem("Id", decode.id); 
+          localStorage.setItem("username", decode.username); 
+          localStorage.setItem("admin", decode.admin); 
+          localStorage.setItem("fullname", decode.fullname); 
+        
+          if(decode.admin){
+            navigate("/AdminHome");
+          }
 
-        // alert("Giriş Başarılı!")
-
-         navigate("/UserHome");
-
-        // <Link to="/UserHome"/>
+          else{
+            navigate("/UserHome");
+          }
  
         }
 

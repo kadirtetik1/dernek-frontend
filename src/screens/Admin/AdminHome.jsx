@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import AddAddress from '../User/AddAddress';
 import TableAdmin from './components/TableAdmin';
 import styles from './AdminHome.module.css'
+import UserNavbar from '../User/components/UserNavbar';
 
 const AdminHome = () => {
 
@@ -15,7 +16,7 @@ const AdminHome = () => {
   return (
     <div>
       <div>
-        <Navbar/>
+        <UserNavbar/>
         <div className={styles.titleContainer}> 
         <h2 className={styles.title}>Adres Defteri</h2>
 
