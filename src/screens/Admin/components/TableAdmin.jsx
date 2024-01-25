@@ -14,14 +14,20 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import AddAddress from '../../User/AddAddress';
 
+import styles from './TableAdmin.module.css'
+
 
 var data = [];
 var data1=[];
+
+let user="";
 
 
 const TableAdmin = () => {
 
  const [data2, setData] = useState("");
+
+ const [userData, setUserData] = useState("");
   
   useEffect(() => {
 
@@ -133,6 +139,33 @@ const TableAdmin = () => {
 
     }
 
+    const[userID, setUserID] = useState(null);
+
+    let userid;
+    let username;
+    let name;
+    let lastname;
+    let admin;
+    let password;
+    let email;
+    let createdtime;
+    
+    function setUserInfo(userid1, username1, name1, lastname1, admin1, password1, email1, createdtime1){
+      userid= userid1;
+      username=username1;
+      name=name1;
+      lastname=lastname1;
+      admin=admin1;
+      password=password1;
+      email=email1;
+      createdtime=createdtime1;
+     
+    }
+
+    let userID2 ="Kayıtsız Giriş.";
+
+    // var userID= "Üyeliksiz Kayıt";
+
 
         const table = useMaterialReactTable({
           columns,
@@ -141,20 +174,60 @@ const TableAdmin = () => {
           enableRowActions: true,
           renderRowActions: ({ row }) => (
             <Box>
-             <IconButton color="info" onClick={() => alert(data[row.index].id)}>
+             <IconButton color="info" onClick={() => {
+              
+              // console.log(data[row.index].userID); 
+                 
+                  if(data[row.index].userID !=null){
+
+                    // setUserID(data[row.index].userID);
+
+                    // console.log(data[row.index].userID);
+
+                    // alert(typeof(userID));
+
+
+                    
+
+                    
+
+                    createAPIEndpoint(EndPoints.user).getById(data[row.index].userID).then((res) =>{ 
+                      setUserData(res.data);
+                      //console.log(res);
+                      // console.log(res.data.username);
+                      // console.log(userData);
+
+                      setUserInfo(res.data.id, res.data.username, res.data.name, res.data.lastname, res.data.admin, res.data.password, res.data.email, res.data.createdTime);
+                      
+                      console.log(userid);
+                      console.log(username);
+                      console.log(name);
+                      console.log(lastname);
+                    
+                    }).catch(err => console.log(err));
+                  
+                    
+                }
+
+            
+            }}>
                 <AccountCircleIcon />
-                <div>
-                  {data[row.index].name}
+                <div className={styles.userID}>
+                  {/* {data[row.index].userID} */}
+
+                  {data[row.index].userID==null? userID2="Üyelikliksiz Kayıt": userID2=data[row.index].userID}
+
+                  {/* {userID2} */}
                 </div>
               </IconButton>
 
               <div>
 
-              <IconButton color="success">  {/* alert(data[row.index].id);  */}
+              {/* <IconButton color="success">  alert(data[row.index].id);  */}
 
               
 
-              <AddAddress name={data[row.index].name} 
+              {/* <AddAddress name={data[row.index].name} 
               lastname={data[row.index].lastname}
               fathername={data[row.index].fatherName}
               address={data[row.index].address}
@@ -163,10 +236,10 @@ const TableAdmin = () => {
               family={data[row.index].family}
               unvan={data[row.index].unvan}
               
-              isclicked={addAddress} closeInfo={setAddAddress}/>
+              isclicked={addAddress} closeInfo={setAddAddress}/> */}
               
-                <EditIcon onClick={() => toggleAddAddress()} />
-              </IconButton>
+                {/* <EditIcon onClick={() => toggleAddAddress()} />
+              </IconButton> */}
 
               </div>
 

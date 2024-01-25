@@ -18,6 +18,10 @@ const AddInfo = (props) => {
   const[unvan, setUnvan]= useState("");
   const[family, setFamily]= useState("");
 
+  // const[userID, setUserID] = useState("");
+
+  const UserID= localStorage.getItem("Id");
+
   const navigate = useNavigate();
 
   const handleNameChange = (value) => {
@@ -65,7 +69,8 @@ const AddInfo = (props) => {
       Phone: phone,
       WorkInfo: workinfo,
       Unvan: unvan,
-      Family: family
+      Family: family,
+      userID: UserID
     };
 
     console.log(data);
