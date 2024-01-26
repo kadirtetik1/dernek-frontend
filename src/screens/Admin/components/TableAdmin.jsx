@@ -203,6 +203,8 @@ const TableAdmin = () => {
                       console.log(username);
                       console.log(name);
                       console.log(lastname);
+
+                      alert("username: "+username);
                     
                     }).catch(err => console.log(err));
                   
@@ -215,7 +217,8 @@ const TableAdmin = () => {
                 <div className={styles.userID}>
                   {/* {data[row.index].userID} */}
 
-                  {data[row.index].userID==null? userID2="Üyelikliksiz Kayıt": userID2=data[row.index].userID}
+                  {/* {data[row.index].userID==null? userID2="Üyelikliksiz Kayıt": userID2=data[row.index].userID} */}
+                  {data[row.index].userID==null? userID2="Üyelikliksiz Kayıt": userID2="Üye Bilgilerini Getir."}
 
                   {/* {userID2} */}
                 </div>
